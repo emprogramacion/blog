@@ -1,2 +1,3 @@
-# blog
-Proyecto blog
+# Proyecto Blog
+
+Añadir descripción detallada al finalizar el proyecto.

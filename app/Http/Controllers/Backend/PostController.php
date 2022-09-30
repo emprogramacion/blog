@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Post;
 use App\Http\Requests\PostRequest;
 
+use Illuminate\Support\Facades\Storage;
+
 class PostController extends Controller
 {
     /**
@@ -38,7 +40,7 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-        dd($request->all());
+        //dd($request->all());
         //salvar
         $post = Post::create([
             'user_id' => auth()->user()->id
@@ -55,17 +57,6 @@ class PostController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Post $post)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Post  $post
@@ -73,7 +64,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -83,9 +74,19 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(PostRequest $request, Post $post)
     {
-        //
+        //dd($request->all());
+        $post->update($request->all());
+
+        Storage::disk('public')->delete($post->image);
+        if($request->file('file')){
+            $post->image = $request->file('file')->store('posts','public');
+            $post->save();
+        }
+
+        //retornar
+        return back()->with('status','Actualizado con éxito');
     }
 
     /**
@@ -96,6 +97,10 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        //eliminación imagen
+        Storage::disk('public')->delete($post->image);
+        $post->delete();
+
+        return back()->with('status','Eliminado con éxito');
     }
 }

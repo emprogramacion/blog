@@ -23,11 +23,36 @@
                             <label>Image</label>
                             <input type="file" name="file" class="form-control-file">
                         </div>
+
+                    <!-- Inicio: Código para validar imagen en el post y mostrarla, si no muestra un mensaje diciendo que no tiene  -->
+                        <!-- @if (!empty($post->image))
+                          <div class="col-12">
+                            <label>Imagen</label>
+                          </div>
+                          <div class="center">
+                            <img 
+                              src="{{ url('storage/'. old('image', $post->image)) }}" 
+                              style="width: 60%; height: 80%"  
+                              class="rounded mx-auto d-block"
+                              alt="image"
+                            >
+                          </div> 
+                        @else
+                          <div class="alert alert-secondary" role="alert">
+                            Este post no contiene imagen de portada!
+                          </div>  
+                        @endif -->
+                    <!-- Fin: Código para validar imagen en el post y mostrarla, si no muestra un mensaje diciendo que no tiene  -->
+
+                    
+                    <!-- Inicio: Código para traer la imagen al formulario de editar -->
                         <!-- <div class="form-group row">
                             <label class="col-8">Imagen</label>
                                 <img class="col-6 offset-3" src="{{url('storage/'.$post->image)}}" alt="">
                                 <input class="col-12 mt-4" type="file" name="file">
                         </div> -->
+                    <!-- Fin: Código para traer la imagen al formulario de editar -->
+
                         <div class="form-group">
                             <label>Contenido *</label>
                             <textarea name="body" rows="6" class="form-control" required>{{ old('body', $post->body) }}</textarea>

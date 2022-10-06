@@ -17,7 +17,7 @@
                         </div>
                     @endif
 
-                    <!-- <table class="table table-dark table-hover"> -->
+                    <!-- <table class="table table-dark table-hover"> Estilo Tabla Oscura-->
                     <table class="table">
                         <thead>
                             <tr>

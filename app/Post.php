@@ -38,4 +38,9 @@ class Post extends Model
         //return substr($this->body, 0, 140);
         return Str::limit($this->body,140);
     }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

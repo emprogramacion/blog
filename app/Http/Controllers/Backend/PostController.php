@@ -86,7 +86,8 @@ class PostController extends Controller
         }
 
         //retornar
-        return back()->with('status','Actualizado con éxito');
+        // return back()->with('status','Actualizado con éxito');
+        return redirect()->route('posts.edit', $post)->with('status','Actualizado con éxito');
     }
 
     /**

@@ -39,6 +39,12 @@ class Post extends Model
         return Str::limit($this->body,140);
     }
 
+    public function getGetImageAttribute()
+    {
+        if($this->image)
+        return url("storage/$this->image");
+    }
+
     public function getRouteKeyName()
     {
         return 'slug';

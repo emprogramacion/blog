@@ -1,7 +1,20 @@
 # Proyecto Blog
 
-Añadir descripción detallada al finalizar el proyecto.
+Descripción general:
+Este proyecto es un sistema de blog, donde se pueden registrar distintos usuarios y publicar sus posts. 
+Todos los posts pueden ser consultados por cualquier persona esté o no registrada en el sistema.
+Cuando un usuario esté logueado solo le aparecerán en la ventana de artículos, aquellos posts que son de su propiedad, puede crear nuevos posts, elminar y actualizar posts.
 
+Descripción detallada de las funcionalidades del proyecto Blog:
+
+- Por defecto se crea un usuario, y 24 posts que son asignados a ese usuario usando los seeders y factories.
+- Sistema de registros de usuarios.
+- Sistema de login de usuarios.
+- CRUD de posts.
+- Manejo de imágenes y contenido embebido en la creación y actualización de los posts.
+- Validaciones de los campos en los formularios.
+- Manejo de rutas amigables (slugs).
+- Favicon personalizado para el proyecto blog.
 
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 

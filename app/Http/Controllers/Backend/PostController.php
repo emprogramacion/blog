@@ -17,7 +17,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::latest()->get();
+        $posts = Post::where('user_id', auth()->user()->id)->latest()->get(); //Traer los post del usuario logueado.
+        // $posts = Post::latest()->get(); //Traer los posts de todos los usuarios.
 
         return view('posts.index', compact('posts'));
     }
@@ -77,16 +78,26 @@ class PostController extends Controller
     public function update(PostRequest $request, Post $post)
     {
         //dd($request->all());
-        $post->update($request->all());
+        
+        // $post->update($request->all()); //Actualizar todos los campos masivamente.
 
-        Storage::disk('public')->delete($post->image);
+        //Actualizar campos en específicos (campos requeridos)
+        $post->update([
+            'title' => $request->title,
+            'body' => $request->body,
+            'iframe' => $request->iframe
+        ]);
+
         if($request->file('file')){
+            Storage::disk('public')->delete($post->image);
             $post->image = $request->file('file')->store('posts','public');
             $post->save();
         }
 
-        //retornar
+        //Retornar a la vista anterior
         // return back()->with('status','Actualizado con éxito');
+
+        //Retornar a la ruta especificada enviando el objeto actualizado (Solución para el slug).
         return redirect()->route('posts.edit', $post)->with('status','Actualizado con éxito');
     }
 

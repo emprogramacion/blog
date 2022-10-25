@@ -5,13 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card mb-4">
+                @if($post->image)
+                <img src="{{ $post->get_image }}" class="card-img-top">
+                @endif
                 <div class="card-body">
-                    @if($post->image)
-                    <img src="{{ $post->get_image }}" class="card-img-top">
-                    @endif
-                    <div>
-                        <br>
-                    </div>
                     @if($post->iframe)
                     <div class="embed-responsive embed-responsive-16by9">
                         {!! $post->iframe !!}

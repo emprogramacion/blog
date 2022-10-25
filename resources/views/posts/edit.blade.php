@@ -29,7 +29,7 @@
                             <label>Imagen</label>
                             @if(!empty($post->image))
                             <div class="div">
-                                <img class="col-3 offset-4" src="{{ url('storage/'. old('image', $post->image)) }}" alt="image">
+                                <img class="card-img-top" src="{{ url('storage/'. old('image', $post->image)) }}" alt="image">
                                 <input class="col-12 mt-3 offset-3" type="file" name="file">
                             </div>
                             @else
